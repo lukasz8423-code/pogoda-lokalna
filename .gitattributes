@@ -1,0 +1,7 @@
+# Treat binary files properly so line endings are not modified
+*.jar binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
+*.zip binary

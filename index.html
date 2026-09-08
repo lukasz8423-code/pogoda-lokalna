@@ -1,1 +1,67 @@
+<!doctype html>
+<html lang="pl" class="bg-[#060913] text-slate-100 dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#060913" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <style>
+      html, body {
+        background-color: #060913 !important;
+        color: #f8fafc;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        width: 100%;
+        overflow-x: hidden;
+      }
+      #root:empty {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+      #root:empty::after {
+        content: "";
+        width: 38px;
+        height: 38px;
+        border: 3px solid rgba(255, 255, 255, 0.12);
+        border-top-color: #3b82f6;
+        border-radius: 50%;
+        animation: aura-spinner 0.8s linear infinite;
+      }
+      @keyframes aura-spinner {
+        to { transform: rotate(360deg); }
+      }
+    </style>
+    <link rel="manifest" href="./manifest.json" id="pwa-manifest" />
+    <script>
+      // Instantly disable PWA features if running inside native app (Capacitor/Android APK)
+      (function() {
+        try {
+          var isNative = Boolean(window.Capacitor && typeof window.Capacitor.isNativePlatform === 'function' && window.Capacitor.isNativePlatform());
+          if (isNative || window.location.search.indexOf('platform=android') !== -1) {
+            var manifest = document.getElementById('pwa-manifest');
+            if (manifest && manifest.parentNode) manifest.parentNode.removeChild(manifest);
+            console.log("PWA manifest removed for native platform");
+          }
+        } catch (e) {
+          console.warn("Native detection notice:", e);
+        }
+      })();
+    </script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Aura Pogoda</title>
+  </head>
+  <body class="bg-[#060913] text-slate-100 min-h-screen">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
 

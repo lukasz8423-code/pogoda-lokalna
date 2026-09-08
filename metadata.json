@@ -1,0 +1,10 @@
+{
+  "name": "Aura Pogoda",
+  "description": "Zaawansowana aplikacja pogodowa pobierająca realne dane telemetrii IMGW oraz modele ECMWF/ICON, oferująca precyzyjne prognozy lokalne i alerty synoptyczne.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
